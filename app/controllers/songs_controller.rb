@@ -13,7 +13,7 @@ class SongsController < ApplicationController
 
     CSV.foreach(params['file'].path, headers: true) do |lead|
       song = Song.create(title: lead[0])
-      artist = Artist.create_or_find(name: lead[1])
+      artist = Artist.create(name: lead[1])
       song.artist_id = artist.id
     end
     redirect_to songs_path
