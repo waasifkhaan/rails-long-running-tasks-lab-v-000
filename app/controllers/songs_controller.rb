@@ -10,7 +10,7 @@ class SongsController < ApplicationController
   end
 
   def upload
-    binding.pry
+    
     CSV.foreach(params[:leads].path, headers: true) do |lead|
       song = Song.create_or_find(title: lead[0])
       artist = Artist.create_or_find(name: lead[1])
